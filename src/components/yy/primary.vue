@@ -81,6 +81,9 @@ mouseleave => 只有在鼠标指针从元素内穿出被选元素（到元素外
             <!-- accept=".pdf" -->
 
             <el-button size="medium" type="primary" id="file" name="f" multiple>点击</el-button>
+            <el-button class="ml-3" type="success" @click="submitUpload">
+      upload to server
+    </el-button>
             <div slot="tip" class="el-upload-tip">只能上传pdf</div>
         </el-upload>
     </div>
