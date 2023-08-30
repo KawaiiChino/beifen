@@ -36,14 +36,15 @@
         <el-dialog v-model="dialogFormVisible" :visible.sync="dialogFormVisible" :title="dialogtitle">
             
             <el-form :model="setSubject">
-                <el-form-item label="P123456" :label-width="formLabelWidth">
+                <el-form-item label="学科ID" :label-width="formLabelWidth">
                     <el-input v-model="setSubject.id" placeholder="id" />
                 </el-form-item>
-                <el-form-item label="Zones" :label-width="formLabelWidth">
-                    <el-select v-model="setSubject.name" placeholder="Please select a zone">
+                <el-form-item label="学科名" :label-width="formLabelWidth">
+                    <!-- <el-select v-model="setSubject.name" placeholder="Please select a zone">
                         <el-option label="Zone No.1" value="shanghai" />
                         <el-option label="Zone No.2" value="beijing" />
-                    </el-select>
+                    </el-select> -->
+                    <el-input v-model="setSubject.name" placeholder="name" />
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -64,7 +65,7 @@
             <el-text class="mx-1">专业:</el-text> <el-input v-model="setSubject.zhuanye" placeholder="专业" />
 
         </div>
-
+        <el-button @click="showaddSubject">弹出新增科目</el-button>
         <el-button @click="getSubject">获取全部</el-button>
 
         <el-button @click="delSubjectbyid">删除指定id科目</el-button>
@@ -186,6 +187,11 @@ export default {
                 this.$message.info('已取消删除');
             });
         },
+        showaddSubject() {
+            this.dialogFormVisible = true;
+            this.dialogtitle = "新增科目"
+            this.setSubject.id = id;
+        }
     },
     mounted() {
         this.getSubject();
@@ -206,7 +212,6 @@ export default {
 }
 
 .el-input {
-    padding-top: 10px;
     margin-right: 10px;
     /* width: 100px; */
 }
